@@ -11,7 +11,7 @@ export default function Security() {
     <>
       <Seo
         title={`Security & Compliance — ${COMPANY_NAME}`}
-        description="Data residency in India, encryption, access controls, and an honest compliance roadmap — how Nabh Cloud approaches security for Indian SMBs."
+        description="Data residency in India, encryption, access controls, and an honest compliance roadmap — how Cachemere Cloud approaches security for Indian SMBs."
       />
 
       <section className="bg-navy-950 py-16 text-white sm:py-20">

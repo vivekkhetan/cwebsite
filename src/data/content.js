@@ -1,11 +1,11 @@
 // Central brand + content config.
 // Swap COMPANY_NAME, TAGLINE and CONTACT once the founders confirm final naming/details.
 
-export const COMPANY_NAME = "Nabh Cloud";
+export const COMPANY_NAME = "Cachemere Cloud";
 export const TAGLINE = "Sovereign Cloud & AI for Bharat's Businesses";
 
 export const CONTACT = {
-  email: "hello@nabhcloud.in",
+  email: "hello@cachemerecloud.com",
   phone: "+91 98765 43210",
   address: "Registered office address — to be confirmed",
 };
@@ -186,6 +186,7 @@ export const SECTORS = [
   {
     key: "hospitality",
     name: "Hospitality",
+    subBrand: "Nest by Cachemere",
     positioning: "Smarter operations and guest experience through connected, AI-enabled systems.",
     icon: "hotel",
   },

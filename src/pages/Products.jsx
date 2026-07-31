@@ -9,7 +9,7 @@ export default function Products() {
     <>
       <Seo
         title={`Infrastructure Products — ${COMPANY_NAME}`}
-        description="The full infrastructure portfolio from Nabh Cloud: GPU cloud, compute, storage, networking, and managed data services — being built for Indian SMBs."
+        description="The full infrastructure portfolio from Cachemere Cloud: GPU cloud, compute, storage, networking, and managed data services — being built for Indian SMBs."
       />
 
       <section className="bg-navy-950 py-16 text-white sm:py-20">

@@ -172,6 +172,7 @@ export default function Home() {
                   <Icon name={s.icon} className="h-5 w-5" />
                 </span>
                 <h3 className="mt-3 font-semibold text-navy-900">{s.name}</h3>
+                {s.subBrand && <p className="mt-0.5 text-xs text-navy-500">{s.subBrand}</p>}
                 <StatusBadge tone="amber" className="mt-2">
                   Coming soon
                 </StatusBadge>

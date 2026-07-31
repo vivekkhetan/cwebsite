@@ -9,7 +9,7 @@ export default function FAQ() {
     <>
       <Seo
         title={`FAQ — ${COMPANY_NAME}`}
-        description="Answers to common questions about Nabh Cloud's sovereign cloud infrastructure, data residency, and how we work with Indian SMBs."
+        description="Answers to common questions about Cachemere Cloud's sovereign cloud infrastructure, data residency, and how we work with Indian SMBs."
       />
 
       <section className="bg-navy-950 py-16 text-white sm:py-20">

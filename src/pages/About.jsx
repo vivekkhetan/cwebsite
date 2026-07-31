@@ -32,7 +32,7 @@ export default function About() {
     <>
       <Seo
         title={`About Us — ${COMPANY_NAME}`}
-        description="Why an India-first, sovereign cloud provider matters now — the mission behind Nabh Cloud."
+        description="Why an India-first, sovereign cloud provider matters now — the mission behind Cachemere Cloud."
       />
 
       <section className="bg-navy-950 py-16 text-white sm:py-20">

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import StatusBadge from "./StatusBadge";
 
-export default function SectorCard({ name, positioning, icon, compact = false }) {
+export default function SectorCard({ name, subBrand, positioning, icon, compact = false }) {
   return (
     <div className="flex flex-col rounded-2xl border border-navy-900/10 bg-white p-6">
       <div className="flex items-start justify-between gap-3">
@@ -11,7 +11,10 @@ export default function SectorCard({ name, positioning, icon, compact = false })
         </span>
         <StatusBadge tone="amber">Coming soon</StatusBadge>
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-navy-900">{name}</h3>
+      <h3 className="mt-4 text-lg font-semibold text-navy-900">
+        {name}
+        {subBrand && <span className="ml-2 text-xs font-normal text-navy-500">{subBrand}</span>}
+      </h3>
       <p className="mt-1.5 flex-1 text-sm leading-relaxed text-navy-600">{positioning}</p>
       {!compact && (
         <Link

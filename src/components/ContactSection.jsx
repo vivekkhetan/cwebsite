@@ -21,19 +21,35 @@ export default function ContactSection() {
     sector: sectorParam && SECTOR_OPTIONS.includes(sectorParam) ? sectorParam : "",
   }));
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
   const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.company || !form.email || !form.phone) {
       setError("Please fill in your name, company, email, and phone number.");
       return;
     }
     setError("");
-    // No backend is wired up yet — this simulates capture for the pre-launch site.
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong. Please try again or email us directly.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -74,7 +90,8 @@ export default function ContactSection() {
               <h3 className="text-xl font-semibold">Thanks — we've got it.</h3>
               <p className="max-w-sm text-sm text-navy-600">
                 Someone from our team will reach out to {form.email || "you"} shortly to
-                continue the conversation.
+                continue the conversation. We've also sent a confirmation email with a
+                summary of what you submitted.
               </p>
             </div>
           ) : (
@@ -167,9 +184,10 @@ export default function ContactSection() {
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-saffron-500 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:bg-saffron-400 sm:w-auto"
+                  disabled={submitting}
+                  className="w-full rounded-full bg-saffron-500 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:bg-saffron-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Talk to Us
+                  {submitting ? "Sending…" : "Talk to Us"}
                 </button>
                 <p className="mt-3 text-xs text-navy-500">
                   No pricing or checkout here — just a conversation. We'll never share your details.

@@ -9,7 +9,7 @@ export default function Solutions() {
     <>
       <Seo
         title={`Industry Solutions — ${COMPANY_NAME}`}
-        description="End-to-end software solutions built on Nabh Cloud for manufacturing, healthcare, education, and hospitality businesses across India."
+        description="End-to-end software solutions built on Cachemere Cloud for manufacturing, healthcare, education, and hospitality businesses across India."
       />
 
       <section className="bg-navy-950 py-16 text-white sm:py-20">
@@ -32,6 +32,7 @@ export default function Solutions() {
             <SectorCard
               key={sector.key}
               name={sector.name}
+              subBrand={sector.subBrand}
               positioning={sector.positioning}
               icon={sector.icon}
             />
