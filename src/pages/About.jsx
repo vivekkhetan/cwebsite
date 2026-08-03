@@ -35,7 +35,7 @@ export default function About() {
         description="Why an India-first, sovereign cloud provider matters now — the mission behind Cachemere Cloud."
       />
 
-      <section className="bg-navy-950 py-16 text-white sm:py-20">
+      <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">About us</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
@@ -98,7 +98,7 @@ export default function About() {
           <div className="mt-8 overflow-hidden rounded-2xl border border-navy-900/10 bg-white">
             <div className="grid grid-cols-3 gap-px bg-navy-900/10 text-sm">
               <div className="bg-navy-50 p-4 font-semibold text-navy-900">Theme</div>
-              <div className="bg-navy-900 p-4 font-semibold text-white">{COMPANY_NAME}</div>
+              <div className="bg-blue-800 p-4 font-semibold text-white">{COMPANY_NAME}</div>
               <div className="bg-navy-50 p-4 font-semibold text-navy-900">Global hyperscalers</div>
               {COMPARISON.map((row) => (
                 <Fragment key={row.theme}>

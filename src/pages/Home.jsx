@@ -23,7 +23,7 @@ export default function Home() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-navy-950 text-white">
+      <section className="relative overflow-hidden bg-blue-900 text-white">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-teal-500/20 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-saffron-500/10 blur-3xl" />
@@ -185,7 +185,7 @@ export default function Home() {
       {/* Security trust strip */}
       <section className="py-20 sm:py-24">
         <div className="section-shell">
-          <div className="rounded-3xl bg-navy-900 p-8 text-white sm:p-12">
+          <div className="rounded-3xl bg-blue-800 p-8 text-white sm:p-12">
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="max-w-lg">
                 <span className="text-xs font-semibold uppercase tracking-wide text-teal-400">
@@ -235,7 +235,7 @@ export default function Home() {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {HOW_IT_WORKS.map((step) => (
               <div key={step.step} className="relative rounded-2xl border border-navy-900/10 bg-white p-6">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy-900 text-sm font-bold text-saffron-400">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-800 text-sm font-bold text-saffron-400">
                   {step.step}
                 </span>
                 <h3 className="mt-4 font-semibold text-navy-900">{step.title}</h3>

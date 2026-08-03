@@ -12,7 +12,7 @@ export default function Solutions() {
         description="End-to-end software solutions built on Cachemere Cloud for manufacturing, healthcare, education, and hospitality businesses across India."
       />
 
-      <section className="bg-navy-950 py-16 text-white sm:py-20">
+      <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">Solutions — coming soon</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">

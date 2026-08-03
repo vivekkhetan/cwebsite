@@ -53,7 +53,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 bg-navy-950 py-20 text-white">
+    <section id="contact" className="scroll-mt-20 bg-blue-900 py-20 text-white">
       <div className="section-shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wide text-saffron-400">
