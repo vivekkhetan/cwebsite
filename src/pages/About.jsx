@@ -50,11 +50,11 @@ export default function About() {
             <h2 className="text-2xl font-bold text-navy-900">Why we exist</h2>
             <p className="mt-4 leading-relaxed text-navy-600">
               India's tier 2 and tier 3 cities are home to millions of ambitious
-              businesses — but most are locked out of the cloud infrastructure that large
-              enterprises take for granted. {COMPANY_NAME} gives them real access to it:
-              compute, storage, networking, and databases, built and supported
-              specifically for this market, so they can run their operations without
-              needing to become infrastructure experts themselves.
+              businesses, and {COMPANY_NAME} gives them direct access to the same cloud
+              infrastructure large enterprises rely on: compute, storage, networking, and
+              databases, built and supported specifically for this market, so they can
+              run their operations without needing to become infrastructure experts
+              themselves.
             </p>
             <p className="mt-4 leading-relaxed text-navy-600">
               For the industries we know best, we go further — ready-made, native

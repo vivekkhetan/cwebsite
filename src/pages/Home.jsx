@@ -101,12 +101,12 @@ export default function Home() {
               Why {COMPANY_NAME}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-              Most businesses in tier 2/3 India can't afford their own infrastructure team.
+              Every business in tier 2/3 India can run on enterprise-grade infrastructure — without hiring a team to manage it.
             </h2>
             <p className="mt-4 text-navy-600">
-              And most global platforms aren't built for them — complex pricing,
-              cross-border data flows, and support that assumes you already have one.
-              That's the gap we're building {COMPANY_NAME} to close.
+              You get the same reliability, transparent pricing, and human support as a
+              metro headquarters, whether you build directly on our infrastructure or run
+              a ready-made solution. That's what we're building {COMPANY_NAME} to deliver.
             </p>
           </div>
 
