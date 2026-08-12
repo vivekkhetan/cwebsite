@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title={`${COMPANY_NAME} — Cloud Infrastructure & Native Solutions for Tier 2/3 India`}
-        description="Core cloud infrastructure and native, industry-ready solutions for businesses in India's tier 2 and tier 3 cities. One platform, human support. Talk to us."
+        title={`${COMPANY_NAME} — Cloud Infrastructure & Native Solutions for India`}
+        description="Core cloud infrastructure and native, industry-ready solutions for growing businesses across India. One platform, human support. Talk to us."
       />
 
       {/* Hero */}
@@ -37,13 +37,12 @@ export default function Home() {
           <div>
             <StatusBadge tone="amber">Launching soon — now onboarding early conversations</StatusBadge>
             <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
-              Cloud infrastructure, built for India's tier 2 and tier 3 businesses.
+              Cloud infrastructure, built for India's growing businesses.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
               Build directly on our core infrastructure, or run a ready-made solution for
               your industry — either way, you get the same reliability, transparent
-              pricing, and human support, purpose-built for cities the big platforms
-              don't show up in.
+              pricing, and human support, purpose-built for businesses across India.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -101,12 +100,12 @@ export default function Home() {
               Why {COMPANY_NAME}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-              Every business in tier 2/3 India can run on enterprise-grade infrastructure — without hiring a team to manage it.
+              Every business in India can run on enterprise-grade infrastructure — without worrying too much.
             </h2>
             <p className="mt-4 text-navy-600">
-              You get the same reliability, transparent pricing, and human support as a
-              metro headquarters, whether you build directly on our infrastructure or run
-              a ready-made solution. That's what we're building {COMPANY_NAME} to deliver.
+              You get the same reliability, transparent pricing, and human support,
+              whether you build directly on our infrastructure or run a ready-made
+              solution. That's what we're building {COMPANY_NAME} to deliver.
             </p>
           </div>
 

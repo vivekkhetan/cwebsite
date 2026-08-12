@@ -17,7 +17,7 @@ const COMPARISON = [
   },
   {
     theme: "Who it's built for",
-    us: "Pricing, support, and presence purpose-built for tier 2/3 India.",
+    us: "Pricing, support, and presence purpose-built for India.",
     global: "A global platform adapted downward, or not serving this market at all.",
   },
   {
@@ -32,14 +32,14 @@ export default function About() {
     <>
       <Seo
         title={`About Us — ${COMPANY_NAME}`}
-        description="One platform, two ways in — the purpose behind Cachemere Cloud's core infrastructure and native solutions for tier 2/3 India."
+        description="One platform, two ways in — the purpose behind Cachemere Cloud's core infrastructure and native solutions for India."
       />
 
       <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">About us</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Infrastructure for the businesses global platforms leave behind.
+            Infrastructure built for India's growing businesses.
           </h1>
         </div>
       </section>
@@ -49,12 +49,11 @@ export default function About() {
           <div>
             <h2 className="text-2xl font-bold text-navy-900">Why we exist</h2>
             <p className="mt-4 leading-relaxed text-navy-600">
-              India's tier 2 and tier 3 cities are home to millions of ambitious
-              businesses, and {COMPANY_NAME} gives them direct access to the same cloud
-              infrastructure large enterprises rely on: compute, storage, networking, and
-              databases, built and supported specifically for this market, so they can
-              run their operations without needing to become infrastructure experts
-              themselves.
+              India is home to millions of ambitious businesses, and {COMPANY_NAME} gives
+              them direct access to the same cloud infrastructure large enterprises rely
+              on: compute, storage, networking, and databases, built and supported
+              specifically for this market, so they can run their operations without
+              needing to become infrastructure experts themselves.
             </p>
             <p className="mt-4 leading-relaxed text-navy-600">
               For the industries we know best, we go further — ready-made, native
@@ -65,9 +64,9 @@ export default function About() {
             </p>
             <p className="mt-4 leading-relaxed text-navy-600">
               Our vision is a country digitized from the ground up — where businesses in
-              every city, not just the metros, have real access to reliable cloud
-              infrastructure and the freedom to build what their business needs on top of
-              it. We're currently in development, talking to founders, IT leads, and
+              every city have real access to reliable cloud infrastructure and the
+              freedom to build what their business needs on top of it. We're currently in
+              development, talking to founders, IT leads, and
               operators across our focus sectors to make sure what we build actually
               solves their problems — not just ours.
             </p>

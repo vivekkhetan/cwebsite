@@ -2,7 +2,7 @@
 // Swap COMPANY_NAME, TAGLINE and CONTACT once the founders confirm final naming/details.
 
 export const COMPANY_NAME = "Cachemere Cloud";
-export const TAGLINE = "Cloud Infrastructure for Tier 2/3 India";
+export const TAGLINE = "Cloud Infrastructure for India";
 
 export const CONTACT = {
   email: "hello@cachemerecloud.com",
@@ -33,7 +33,7 @@ export const WHY_POINTS = [
   },
   {
     title: "Built for where you are",
-    body: "Tier 2/3 cities get the same quality of infrastructure and support as a metro headquarters.",
+    body: "Every business gets the same quality of infrastructure and support, wherever they're based.",
   },
 ];
 
@@ -48,7 +48,7 @@ export const BRAND_VALUES = [
   },
   {
     title: "Show up where others don't",
-    body: "Tier 2/3 cities get the same quality of infrastructure and support as a metro headquarters.",
+    body: "Every business gets the same quality of infrastructure and support, wherever they're based.",
   },
   {
     title: "Earn trust through reliability, not promises",
@@ -62,8 +62,8 @@ export const KEY_MESSAGES = [
     body: "Build directly on our core infrastructure, or run a native solution for your industry — without switching providers as needs evolve.",
   },
   {
-    title: "Built for tier 2/3 India",
-    body: "Pricing, support, and presence purpose-built for the cities global platforms don't show up in.",
+    title: "Built for all of India",
+    body: "Pricing, support, and presence purpose-built for businesses across India.",
   },
   {
     title: "The same guarantee at every layer",
@@ -267,7 +267,7 @@ export const FAQS = [
   },
   {
     q: "What size of business do you work with?",
-    a: "We're built for businesses in India's tier 2 and tier 3 cities, across manufacturing, healthcare, education, and hospitality — whether you're a non-technical owner/operator looking for a ready-made solution, or an IT/operations team that wants to build directly on our infrastructure.",
+    a: "We're built for businesses across India, across manufacturing, healthcare, education, and hospitality — whether you're a non-technical owner/operator looking for a ready-made solution, or an IT/operations team that wants to build directly on our infrastructure.",
   },
   {
     q: "Do I need my own technical/IT team to use your services?",
