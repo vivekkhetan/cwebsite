@@ -9,18 +9,18 @@ export default function Products() {
     <>
       <Seo
         title={`Infrastructure Products — ${COMPANY_NAME}`}
-        description="The full infrastructure portfolio from Cachemere Cloud: GPU cloud, compute, storage, networking, and managed data services — being built for Indian SMBs."
+        description="The core infrastructure portfolio from Cachemere Cloud: compute, storage, networking, and managed data services you can build your business on, purpose-built for tier 2/3 India."
       />
 
       <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">Our infrastructure stack — in development</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Everything you need to run modern workloads, without running your own data center.
+            Everything you need to build and run your operations — without becoming an infrastructure expert.
           </h1>
           <p className="mt-5 max-w-xl text-navy-300">
-            A full cloud infrastructure portfolio — compute, storage, resilience,
-            networking, and data — built for Indian businesses and hosted on Indian soil.
+            The core infrastructure portfolio — compute, storage, resilience, networking,
+            and data — one platform, purpose-built for tier 2/3 India.
           </p>
         </div>
       </section>

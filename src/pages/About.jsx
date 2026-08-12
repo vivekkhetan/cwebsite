@@ -2,28 +2,28 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import StatusBadge from "../components/StatusBadge";
-import { COMPANY_NAME } from "../data/content";
+import { COMPANY_NAME, BRAND_VALUES } from "../data/content";
 
 const COMPARISON = [
   {
-    theme: "Data sovereignty",
-    us: "Hosted on Indian soil, under Indian jurisdiction, always.",
-    global: "Often hosted in overseas regions with cross-border data flows.",
+    theme: "How you get started",
+    us: "Build directly on our infrastructure, or run a native solution — one provider, either way.",
+    global: "Often locked into a single delivery model, with no path to change as you grow.",
   },
   {
-    theme: "Support model",
-    us: "A dedicated, hands-on point of contact who knows your business.",
-    global: "Ticket queues and tiered support plans.",
+    theme: "What \"native\" means",
+    us: "Solutions built directly for our own infrastructure — real technical and reliability advantages.",
+    global: "Vertical products frequently bolted onto someone else's cloud, adding a layer of dependency.",
   },
   {
     theme: "Who it's built for",
-    us: "SMBs in tier 2/3 cities who don't have an in-house infra or AI team.",
-    global: "Often optimized for large enterprises with dedicated cloud teams.",
+    us: "Pricing, support, and presence purpose-built for tier 2/3 India.",
+    global: "A global platform adapted downward, or not serving this market at all.",
   },
   {
-    theme: "Pricing & billing",
-    us: "INR billing, built for SMB budgets (full detail coming as we launch).",
-    global: "Complex global pricing, frequently billed in foreign currency.",
+    theme: "The guarantee",
+    us: "The same security, compliance, backups, and support at every layer you touch.",
+    global: "Guarantees that can vary depending on which product or tier you're on.",
   },
 ];
 
@@ -32,14 +32,14 @@ export default function About() {
     <>
       <Seo
         title={`About Us — ${COMPANY_NAME}`}
-        description="Why an India-first, sovereign cloud provider matters now — the mission behind Cachemere Cloud."
+        description="One platform, two ways in — the purpose behind Cachemere Cloud's core infrastructure and native solutions for tier 2/3 India."
       />
 
       <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">About us</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Built for the businesses that make Bharat run.
+            Infrastructure for the businesses global platforms leave behind.
           </h1>
         </div>
       </section>
@@ -50,22 +50,26 @@ export default function About() {
             <h2 className="text-2xl font-bold text-navy-900">Why we exist</h2>
             <p className="mt-4 leading-relaxed text-navy-600">
               India's tier 2 and tier 3 cities are home to millions of ambitious
-              businesses in manufacturing, healthcare, education, and hospitality — but
-              most of them are locked out of the cloud and AI infrastructure that large
-              enterprises take for granted. Global hyperscalers are built for global
-              enterprise buyers: complex pricing, cross-border data flows, and support
-              models that assume you already have an infrastructure team.
+              businesses — but most are locked out of the cloud infrastructure that large
+              enterprises take for granted. {COMPANY_NAME} gives them real access to it:
+              compute, storage, networking, and databases, built and supported
+              specifically for this market, so they can run their operations without
+              needing to become infrastructure experts themselves.
             </p>
             <p className="mt-4 leading-relaxed text-navy-600">
-              {COMPANY_NAME} exists to close that gap — sovereign, India-hosted cloud and
-              AI infrastructure, with hands-on support, built specifically for businesses
-              that want enterprise-grade capability without needing to build an
-              enterprise-grade team to run it.
+              For the industries we know best, we go further — ready-made, native
+              solutions built directly on our own infrastructure, so businesses don't
+              have to build from scratch to get enterprise-grade operations. Either way,
+              we stand beside our customers with human support, so their energy goes into
+              their business, not their infrastructure.
             </p>
             <p className="mt-4 leading-relaxed text-navy-600">
-              We're currently in development, talking to founders, IT leads, and operators
-              across our focus sectors to make sure what we build actually solves their
-              problems — not just ours.
+              Our vision is a country digitized from the ground up — where businesses in
+              every city, not just the metros, have real access to reliable cloud
+              infrastructure and the freedom to build what their business needs on top of
+              it. We're currently in development, talking to founders, IT leads, and
+              operators across our focus sectors to make sure what we build actually
+              solves their problems — not just ours.
             </p>
           </div>
 
@@ -87,6 +91,22 @@ export default function About() {
       </section>
 
       <section className="border-t border-navy-900/10 bg-navy-50/60 py-16 sm:py-20">
+        <div className="section-shell">
+          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">What we believe</h2>
+          <p className="mt-3 max-w-2xl text-navy-600">Our brand values, in practice.</p>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {BRAND_VALUES.map((value) => (
+              <div key={value.title} className="rounded-2xl border border-navy-900/10 bg-white p-6">
+                <h3 className="font-semibold text-navy-900">{value.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-600">{value.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
         <div className="section-shell">
           <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">
             How we're different from global cloud providers

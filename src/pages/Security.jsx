@@ -11,19 +11,18 @@ export default function Security() {
     <>
       <Seo
         title={`Security & Compliance — ${COMPANY_NAME}`}
-        description="Data residency in India, encryption, access controls, and an honest compliance roadmap — how Cachemere Cloud approaches security for Indian SMBs."
+        description="Verifiable security and compliance — infrastructure hosted in India, encryption, access controls, and an honest certification roadmap from Cachemere Cloud."
       />
 
       <section className="bg-blue-900 py-16 text-white sm:py-20">
         <div className="section-shell">
           <StatusBadge tone="teal">Security &amp; compliance</StatusBadge>
           <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            The highest standards of security — because it's your data, and it should
-            stay that way.
+            Earn trust through reliability, not promises.
           </h1>
           <p className="mt-5 max-w-xl text-navy-300">
-            Enterprise-grade security and compliance, without you needing to hire an
-            in-house security team.
+            Verifiable, directly-assessable security and compliance — whether you touch
+            our infrastructure directly or run a native solution on top of it.
           </p>
         </div>
       </section>
@@ -49,7 +48,7 @@ export default function Security() {
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-navy-700">
               We won't claim a certification we haven't earned. Where compliance work is
               still underway, we say so plainly — "working toward" or "in progress," not a
-              badge we haven't been awarded. Once ISO 27001 certification, MeitY
+              badge we haven't been awarded. Once PCI-DSS, ISO 27001, ISO 20000, MeitY
               empanelment, or other credentials are formally achieved, we'll update this
               page with verifiable details.
             </p>

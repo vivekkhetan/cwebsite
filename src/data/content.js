@@ -2,7 +2,7 @@
 // Swap COMPANY_NAME, TAGLINE and CONTACT once the founders confirm final naming/details.
 
 export const COMPANY_NAME = "Cachemere Cloud";
-export const TAGLINE = "Sovereign Cloud & AI for Bharat's Businesses";
+export const TAGLINE = "Cloud Infrastructure for Tier 2/3 India";
 
 export const CONTACT = {
   email: "hello@cachemerecloud.com",
@@ -20,43 +20,62 @@ export const NAV_LINKS = [
 
 export const WHY_POINTS = [
   {
-    title: "Your data stays yours",
-    body: "Hosted in India, governed by Indian law, never used to train someone else's models.",
+    title: "One platform, no wrong door",
+    body: "Build directly on our infrastructure, or run a ready-made solution — either way, you get the same reliability and support.",
   },
   {
-    title: "Enterprise capability, SMB-sized",
-    body: "Access GPU and AI infrastructure without hiring an infrastructure team.",
+    title: "Real infrastructure, not a bolt-on",
+    body: "Compute, network, storage, security, and databases you can build on directly — not a tool layered on someone else's cloud.",
   },
   {
-    title: "Real support, not call centers",
-    body: "A dedicated point of contact who understands your business.",
+    title: "Human support, not a ticket queue",
+    body: "A team that shows up locally, so your energy goes into your business, not your infrastructure.",
   },
   {
     title: "Built for where you are",
-    body: "Designed for businesses in tier 2/3 cities, not just metro enterprises.",
+    body: "Tier 2/3 cities get the same quality of infrastructure and support as a metro headquarters.",
+  },
+];
+
+export const BRAND_VALUES = [
+  {
+    title: "One platform, no wrong door",
+    body: "Whether a business builds on our infrastructure directly or starts with a ready-made solution, they get the same reliability and support.",
+  },
+  {
+    title: "Simplicity is respect",
+    body: "Infrastructure shouldn't require an advanced explanation for those who just want it to work.",
+  },
+  {
+    title: "Show up where others don't",
+    body: "Tier 2/3 cities get the same quality of infrastructure and support as a metro headquarters.",
+  },
+  {
+    title: "Earn trust through reliability, not promises",
+    body: "Uptime, security, and compliance matter more than announcements.",
   },
 ];
 
 export const KEY_MESSAGES = [
   {
-    title: "Sovereign by design",
-    body: "Your data, your AI models, your control — hosted on Indian infrastructure, under Indian jurisdiction.",
+    title: "One provider, two ways in",
+    body: "Build directly on our core infrastructure, or run a native solution for your industry — without switching providers as needs evolve.",
   },
   {
-    title: "Built for Bharat's SMBs",
-    body: "Advanced AI and cloud infrastructure made accessible to businesses that can't build or manage it themselves — not just large enterprises.",
+    title: "Built for tier 2/3 India",
+    body: "Pricing, support, and presence purpose-built for the cities global platforms don't show up in.",
   },
   {
-    title: "Highest security standards",
-    body: "Enterprise-grade security and compliance, without needing an in-house security team.",
+    title: "The same guarantee at every layer",
+    body: "Security, compliance, backups, and support apply whether you touch raw infrastructure or a native solution.",
   },
   {
-    title: "Consistent, hands-on support",
-    body: "A real support relationship, not a ticket queue — so you can run your business, not your infrastructure.",
+    title: "Human support, not a ticket queue",
+    body: "A real support relationship — so you can run your business, not your infrastructure.",
   },
   {
-    title: "Latest hardware, India-based",
-    body: "Modern GPU and AI-capable infrastructure, run and supported locally.",
+    title: "Earn trust through reliability, not promises",
+    body: "Uptime, security, and compliance matter more than announcements.",
   },
 ];
 
@@ -194,8 +213,8 @@ export const SECTORS = [
 
 export const SECURITY_PILLARS = [
   {
-    title: "Data residency in India",
-    body: "Your data is stored and processed on Indian soil, subject to Indian law only.",
+    title: "Hosted in India",
+    body: "Infrastructure hosted and supported within India, close to the businesses that run on it.",
   },
   {
     title: "Encryption at rest and in transit",
@@ -206,8 +225,8 @@ export const SECURITY_PILLARS = [
     body: "Strict, role-based access so only the right people can reach your systems and data.",
   },
   {
-    title: "Compliance roadmap",
-    body: "Working toward ISO 27001 certification and MeitY empanelment, and building to align with RBI data localization guidelines.",
+    title: "Verifiable compliance credentials",
+    body: "Working toward PCI-DSS, ISO 27001, ISO 20000, and MeitY empanelment — credentials you'll be able to assess directly, not just take our word for.",
   },
   {
     title: "Regular audits",
@@ -224,7 +243,7 @@ export const HOW_IT_WORKS = [
   {
     step: "2",
     title: "We design your setup",
-    body: "Infrastructure and/or solution tailored to your sector and scale.",
+    body: "Core infrastructure, a native solution, or both — tailored to your sector and scale.",
   },
   {
     step: "3",
@@ -235,24 +254,28 @@ export const HOW_IT_WORKS = [
 
 export const FAQS = [
   {
-    q: "Is your product available now, or still launching?",
-    a: `${COMPANY_NAME} is currently in development and onboarding early conversations ahead of launch. We're talking with businesses now to shape what we build — reach out and we'll walk you through what's ready and what's coming.`,
+    q: "Is your platform available now, or still launching?",
+    a: `${COMPANY_NAME} is currently in development and onboarding early conversations ahead of launch. We're talking with businesses now to shape both our core infrastructure and our native solutions — reach out and we'll walk you through what's ready and what's coming.`,
+  },
+  {
+    q: "What's the difference between a native solution and building on your core infrastructure?",
+    a: "They're two ways into the same platform. A native solution is ready-made for your industry — no building required, and you're up and running quickly. Building on our core infrastructure means using our compute, network, storage, security, and databases directly, through a single management plane, if your team wants more control. Either way, you get the same reliability, security, and human support underneath.",
   },
   {
     q: "Where is my data physically stored?",
-    a: "All infrastructure is hosted on Indian soil. We'll confirm exact data center locations as they're finalized — every deployment stays within India, governed by Indian law.",
+    a: "All infrastructure is hosted in India. We'll share exact data center locations as they're finalized.",
   },
   {
     q: "What size of business do you work with?",
-    a: "We're built for small and medium businesses, particularly in India's tier 2 and tier 3 cities, across manufacturing, healthcare, education, and hospitality. If you don't have an in-house infrastructure or AI team, that's exactly who we're for.",
+    a: "We're built for businesses in India's tier 2 and tier 3 cities, across manufacturing, healthcare, education, and hospitality — whether you're a non-technical owner/operator looking for a ready-made solution, or an IT/operations team that wants to build directly on our infrastructure.",
   },
   {
     q: "Do I need my own technical/IT team to use your services?",
-    a: "No. Hands-on setup and ongoing support are core to how we work — you get a dedicated point of contact, not just a product to self-manage.",
+    a: "Not necessarily. A native solution is ready-made — no building or configuration required, and no in-house IT needed to set it up or troubleshoot it. If you're building directly on our core infrastructure, a technical team helps, but our human support means you're never on your own either way.",
   },
   {
     q: "What industries do you currently support?",
-    a: "Our initial focus sectors are manufacturing, healthcare, education, and hospitality, with core cloud and GPU infrastructure available across industries.",
+    a: "Our focus sectors are manufacturing, healthcare, education, and hospitality. Our core infrastructure — compute, storage, networking, and databases — is available to any business, in any industry.",
   },
   {
     q: "How do I get started / talk to someone?",

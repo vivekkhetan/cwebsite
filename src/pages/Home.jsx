@@ -18,8 +18,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title={`${COMPANY_NAME} — Sovereign Cloud & AI Infrastructure for Indian Businesses`}
-        description="Secure, India-hosted cloud infrastructure and AI solutions built for small and medium businesses in tier 2 and tier 3 cities. Talk to us."
+        title={`${COMPANY_NAME} — Cloud Infrastructure & Native Solutions for Tier 2/3 India`}
+        description="Core cloud infrastructure and native, industry-ready solutions for businesses in India's tier 2 and tier 3 cities. One platform, human support. Talk to us."
       />
 
       {/* Hero */}
@@ -33,13 +33,13 @@ export default function Home() {
           <div>
             <StatusBadge tone="amber">Launching soon — now onboarding early conversations</StatusBadge>
             <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
-              Sovereign cloud and AI, built for India's growing businesses.
+              Cloud infrastructure, built for India's tier 2 and tier 3 businesses.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
-              We give small and medium businesses across India the advanced cloud
-              infrastructure and AI capabilities of a big enterprise — hosted on Indian
-              soil, backed by hands-on support, without needing a technical team of your
-              own.
+              Build directly on our core infrastructure, or run a ready-made solution for
+              your industry — either way, you get the same reliability, transparent
+              pricing, and human support, purpose-built for cities the big platforms
+              don't show up in.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -76,8 +76,8 @@ export default function Home() {
               </div>
               <div className="mt-6 space-y-3 text-xs text-navy-300">
                 <div className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
-                  <span>Data residency</span>
-                  <span className="font-semibold text-teal-300">India only</span>
+                  <span>Ways in</span>
+                  <span className="font-semibold text-teal-300">Build or run</span>
                 </div>
                 <div className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
                   <span>Infrastructure</span>
@@ -89,19 +89,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Sovereign Cloud */}
+      {/* Why Cachemere Cloud */}
       <section className="py-20 sm:py-24">
         <div className="section-shell">
           <div className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-wide text-teal-600">
-              Why sovereign cloud
+              Why {COMPANY_NAME}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-              Most SMBs can't afford their own data center, security team, or AI experts.
+              Most businesses in tier 2/3 India can't afford their own infrastructure team.
             </h2>
             <p className="mt-4 text-navy-600">
-              And many are wary of global cloud providers over data control, compliance,
-              and cost. That's the gap we're building {COMPANY_NAME} to close.
+              And most global platforms aren't built for them — complex pricing,
+              cross-border data flows, and support that assumes you already have one.
+              That's the gap we're building {COMPANY_NAME} to close.
             </p>
           </div>
 
@@ -125,7 +126,7 @@ export default function Home() {
                 What we're building
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-                An infrastructure stack — and industry solutions built on top of it.
+                Core infrastructure you can build on — and native solutions for when you'd rather not.
               </h2>
             </div>
             <Link
@@ -151,10 +152,10 @@ export default function Home() {
           <div className="mt-16 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-xl">
               <span className="text-xs font-semibold uppercase tracking-wide text-saffron-600">
-                Industry solutions
+                Native solutions
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-                End-to-end software, built on our cloud, for the sectors we know best.
+                Built directly on our own infrastructure, for the sectors we know best.
               </h2>
             </div>
             <Link
@@ -192,7 +193,7 @@ export default function Home() {
                   Security &amp; compliance
                 </span>
                 <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
-                  The highest standards of security — because it's your data.
+                  Earn trust through reliability, not promises.
                 </h2>
               </div>
               <Link
@@ -213,8 +214,8 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-6 text-xs text-navy-400">
-              We're building toward ISO 27001 certification and MeitY empanelment — presented
-              honestly as "in progress," not claimed before it's achieved.
+              We're working toward PCI-DSS, ISO 27001, ISO 20000, and MeitY empanelment —
+              presented honestly as "in progress," not claimed before it's achieved.
             </p>
           </div>
         </div>
