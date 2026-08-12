@@ -12,6 +12,10 @@ import {
   HOW_IT_WORKS,
 } from "../data/content";
 
+// Mirrors real product icons (compute, storage, resilience, networking) so the
+// hero visual previews the actual infrastructure stack shown further down the page.
+const HERO_STACK_ICONS = ["cpu", "server", "cube", "disk", "bucket", "shield-check", "grid", "shield", "network"];
+
 export default function Home() {
   const productNames = PRODUCT_CATEGORIES.flatMap((cat) => cat.items);
 
@@ -60,14 +64,14 @@ export default function Home() {
           <div className="relative">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
               <div className="grid grid-cols-3 gap-3">
-                {[...Array(9)].map((_, i) => (
+                {HERO_STACK_ICONS.map((icon, i) => (
                   <div
-                    key={i}
-                    className="flex aspect-square items-center justify-center rounded-lg border border-white/10 bg-white/5"
-                    style={{ animationDelay: `${i * 120}ms` }}
+                    key={icon}
+                    className="relative flex aspect-square items-center justify-center rounded-lg border border-white/10 bg-white/5"
                   >
+                    <Icon name={icon} className="h-6 w-6 text-white/70" />
                     <span
-                      className={`h-2 w-2 rounded-full ${
+                      className={`absolute top-2 right-2 h-1.5 w-1.5 rounded-full ${
                         i % 3 === 0 ? "bg-teal-400" : i % 3 === 1 ? "bg-saffron-400" : "bg-white/30"
                       }`}
                     />
