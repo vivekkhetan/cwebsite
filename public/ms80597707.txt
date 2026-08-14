@@ -1,0 +1,5 @@
+{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "cachemere.ai",
+  "Id": "8ccc1ca1-aa41-4594-9097-3bcf6db67981"
+}
