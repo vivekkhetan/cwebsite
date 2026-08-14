@@ -1,4 +1,5 @@
-const RESEND_API_URL = "https://api.resend.com/emails";
+import nodemailer from "nodemailer";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async function handler(req, res) {
@@ -7,12 +8,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
+  const smtpUser = process.env.GOOGLE_SMTP_USER;
+  const smtpPass = process.env.GOOGLE_SMTP_APP_PASSWORD;
+  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL || smtpUser;
 
-  if (!apiKey || !companyEmail) {
-    console.error("Missing RESEND_API_KEY or COMPANY_NOTIFICATION_EMAIL env var");
+  if (!smtpUser || !smtpPass) {
+    console.error("Missing GOOGLE_SMTP_USER or GOOGLE_SMTP_APP_PASSWORD env var");
     return res.status(500).json({ error: "Email service not configured" });
   }
 
@@ -43,38 +44,29 @@ export default async function handler(req, res) {
     )
     .join("")}</table>`;
 
-  const send = (payload) =>
-    fetch(RESEND_API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user: smtpUser, pass: smtpPass },
+  });
 
   try {
-    const [notifyRes, clientRes] = await Promise.all([
-      send({
-        from: `Cachemere Cloud <${fromEmail}>`,
-        to: [companyEmail],
-        reply_to: email,
+    await Promise.all([
+      transporter.sendMail({
+        from: `Cachemere Cloud <${smtpUser}>`,
+        to: companyEmail,
+        replyTo: email,
         subject: `New lead: ${company} (${name})`,
         html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
       }),
-      send({
-        from: `Cachemere Cloud <${fromEmail}>`,
-        to: [email],
+      transporter.sendMail({
+        from: `Cachemere Cloud <${smtpUser}>`,
+        to: email,
         subject: "We've got your message — Cachemere Cloud",
         html: `<p>Hi ${escapeHtml(name)},</p><p>Thanks for reaching out to Cachemere Cloud. Here's a summary of what you submitted — someone from our team will be in touch shortly.</p>${summaryHtml}<p>If anything above isn't right, just reply to this email.</p><p>— The Cachemere Cloud team</p>`,
       }),
     ]);
-
-    if (!notifyRes.ok || !clientRes.ok) {
-      const [notifyBody, clientBody] = await Promise.all([notifyRes.text(), clientRes.text()]);
-      console.error("Resend error", { notifyBody, clientBody });
-      return res.status(502).json({ error: "Failed to send email" });
-    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {

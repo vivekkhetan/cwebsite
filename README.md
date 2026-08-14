@@ -36,15 +36,24 @@ All copy, product/sector data, FAQs, and contact details are centralized in
 ## Contact form emails
 
 Submitting the "Talk to Us" form calls `api/contact.js`, a Vercel serverless
-function that sends two emails via [Resend](https://resend.com): a lead
-notification to the company inbox, and a summary confirmation to the client.
+function that sends two emails through Google SMTP (`smtp.gmail.com`) via
+[Nodemailer](https://nodemailer.com): a lead notification to the company
+inbox, and a summary confirmation to the client.
 
 Required environment variables (see `.env.example`):
 
-- `RESEND_API_KEY` — from your Resend account.
-- `COMPANY_NOTIFICATION_EMAIL` — where new leads get sent.
-- `CONTACT_FROM_EMAIL` — the "from" address; must be on a domain verified in
-  Resend for production use.
+- `GOOGLE_SMTP_USER` — the Gmail or Google Workspace address that sends the
+  emails (e.g. `vivek.khetan@cachemere.ai`).
+- `GOOGLE_SMTP_APP_PASSWORD` — an **App Password** for that account, not its
+  normal login password. Google blocks regular-password SMTP login. To
+  generate one:
+  1. Turn on 2-Step Verification on the Google account, if it isn't already
+     (myaccount.google.com → Security).
+  2. Go to myaccount.google.com/apppasswords.
+  3. Create an app password (name it something like "Cachemere website"),
+     copy the 16-character code it gives you.
+- `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land. Leave
+  blank to default to `GOOGLE_SMTP_USER`, i.e. the same inbox that's sending.
 
 Set these in Vercel under Project Settings → Environment Variables. To test
 locally, copy `.env.example` to `.env.local`, fill in the values, and run:
@@ -56,3 +65,7 @@ vercel dev
 
 `npm run dev` (plain Vite) does not run the `/api` function, so the form
 will fail locally unless you use `vercel dev`.
+
+Note: Gmail's SMTP server generally requires the "from" address to match
+(or be a verified alias of) `GOOGLE_SMTP_USER` — it will silently rewrite
+a mismatched "from" to the authenticated account.
