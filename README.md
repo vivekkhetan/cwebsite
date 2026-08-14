@@ -36,9 +36,9 @@ All copy, product/sector data, FAQs, and contact details are centralized in
 ## Contact form emails
 
 Submitting the "Talk to Us" form calls `api/contact.js`, a Vercel serverless
-function that sends two emails through Google SMTP (`smtp.gmail.com`) via
-[Nodemailer](https://nodemailer.com): a lead notification to the company
-inbox, and a summary confirmation to the client.
+function that sends a lead notification to the company inbox through Google
+SMTP (`smtp.gmail.com`) via [Nodemailer](https://nodemailer.com). It's
+one-way — the client who submitted the form does not receive an email.
 
 Required environment variables (see `.env.example`):
 

@@ -52,21 +52,13 @@ export default async function handler(req, res) {
   });
 
   try {
-    await Promise.all([
-      transporter.sendMail({
-        from: `Cachemere Cloud <${smtpUser}>`,
-        to: companyEmail,
-        replyTo: email,
-        subject: `New lead: ${company} (${name})`,
-        html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
-      }),
-      transporter.sendMail({
-        from: `Cachemere Cloud <${smtpUser}>`,
-        to: email,
-        subject: "We've got your message — Cachemere Cloud",
-        html: `<p>Hi ${escapeHtml(name)},</p><p>Thanks for reaching out to Cachemere Cloud. Here's a summary of what you submitted — someone from our team will be in touch shortly.</p>${summaryHtml}<p>If anything above isn't right, just reply to this email.</p><p>— The Cachemere Cloud team</p>`,
-      }),
-    ]);
+    await transporter.sendMail({
+      from: `Cachemere Cloud <${smtpUser}>`,
+      to: companyEmail,
+      replyTo: email,
+      subject: `New lead: ${company} (${name})`,
+      html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
+    });
 
     return res.status(200).json({ ok: true });
   } catch (err) {

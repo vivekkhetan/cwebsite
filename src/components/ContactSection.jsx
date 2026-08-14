@@ -90,8 +90,7 @@ export default function ContactSection() {
               <h3 className="text-xl font-semibold">Thanks — we've got it.</h3>
               <p className="max-w-sm text-sm text-navy-600">
                 Someone from our team will reach out to {form.email || "you"} shortly to
-                continue the conversation. We've also sent a confirmation email with a
-                summary of what you submitted.
+                continue the conversation.
               </p>
             </div>
           ) : (
