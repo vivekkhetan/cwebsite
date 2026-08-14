@@ -36,39 +36,16 @@ All copy, product/sector data, FAQs, and contact details are centralized in
 ## Contact form emails
 
 Submitting the "Talk to Us" form calls `api/contact.js`, a Vercel serverless
-function that sends a lead notification to the company inbox through
-Microsoft 365 SMTP (`smtp.office365.com`) via
-[Nodemailer](https://nodemailer.com). It's one-way — the client who
-submitted the form does not receive an email.
+function that sends a lead notification to the company inbox via
+[Resend](https://resend.com). It's one-way — the client who submitted the
+form does not receive an email.
 
 Required environment variables (see `.env.example`):
 
-- `SMTP_USER` — the Microsoft 365 mailbox that sends the emails
-  (e.g. `vivek.khetan@cachemere.ai`).
-- `SMTP_PASSWORD` — that account's password, or an app password if the
-  account has MFA enabled (see below).
-- `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land. Leave
-  blank to default to `SMTP_USER`, i.e. the same inbox that's sending.
-
-**Before this will work, an admin needs to enable SMTP AUTH for the
-mailbox** — Microsoft 365 disables it by default on all mailboxes.
-
-1. Go to admin.microsoft.com → **Users** → **Active users** → click the
-   sending mailbox → **Mail** tab → **Manage email apps** → check
-   **Authenticated SMTP** → **Save changes**.
-   (Or via Exchange Online PowerShell:
-   `Set-CASMailbox -Identity user@domain.com -SmtpClientAuthenticationDisabled $false`)
-2. **If that account has MFA enabled** (common — many tenants turn this on
-   by default via Security Defaults): a plain password won't authenticate.
-   - If the tenant uses **legacy per-user MFA**, generate an app password
-     for the account and use that as `SMTP_PASSWORD` instead.
-   - If the tenant uses **Security Defaults or Conditional Access**, app
-     passwords aren't available at all, and this basic SMTP approach won't
-     authenticate — the simplest fix is a dedicated sending mailbox
-     (e.g. `forms@cachemere.ai`) with MFA excluded, used only for this
-     purpose. Tell me if you hit this and I can switch the integration to
-     Microsoft Graph API with OAuth2 instead, which works regardless of
-     MFA policy but needs an app registration in the Entra admin center.
+- `RESEND_API_KEY` — from your Resend account.
+- `COMPANY_NOTIFICATION_EMAIL` — where new leads get sent.
+- `CONTACT_FROM_EMAIL` — the "from" address; must be on a domain verified in
+  Resend for production use.
 
 Set these in Vercel under Project Settings → Environment Variables. To test
 locally, copy `.env.example` to `.env.local`, fill in the values, and run:
@@ -80,7 +57,3 @@ vercel dev
 
 `npm run dev` (plain Vite) does not run the `/api` function, so the form
 will fail locally unless you use `vercel dev`.
-
-Note: Gmail's SMTP server generally requires the "from" address to match
-(or be a verified alias of) `GOOGLE_SMTP_USER` — it will silently rewrite
-a mismatched "from" to the authenticated account.
