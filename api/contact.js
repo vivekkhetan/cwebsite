@@ -8,12 +8,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const smtpUser = process.env.GOOGLE_SMTP_USER;
-  const smtpPass = process.env.GOOGLE_SMTP_APP_PASSWORD;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASSWORD;
   const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL || smtpUser;
 
   if (!smtpUser || !smtpPass) {
-    console.error("Missing GOOGLE_SMTP_USER or GOOGLE_SMTP_APP_PASSWORD env var");
+    console.error("Missing SMTP_USER or SMTP_PASSWORD env var");
     return res.status(500).json({ error: "Email service not configured" });
   }
 
@@ -45,9 +45,9 @@ export default async function handler(req, res) {
     .join("")}</table>`;
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false, // STARTTLS on port 587, not implicit TLS
     auth: { user: smtpUser, pass: smtpPass },
   });
 
