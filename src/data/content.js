@@ -5,8 +5,8 @@ export const COMPANY_NAME = "Cachemere Cloud";
 export const TAGLINE = "Cloud Infrastructure for India";
 
 export const CONTACT = {
-  email: "hello@cachemerecloud.com",
-  phone: "+91 98765 43210",
+  email: "vivek.khetan@cachemere.ai",
+  phone: "+91 78991 21912",
   address: "Registered office address — to be confirmed",
 };
 
