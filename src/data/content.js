@@ -7,7 +7,7 @@ export const TAGLINE = "Cloud Infrastructure for India";
 export const CONTACT = {
   email: "vivek.khetan@cachemere.ai",
   phone: "+91 78991 21912",
-  address: "Registered office address — to be confirmed",
+  address: "Eldeco Centre, Block A, Shivalik Colony, Malviya Nagar, New Delhi, Delhi 110017",
 };
 
 export const NAV_LINKS = [
