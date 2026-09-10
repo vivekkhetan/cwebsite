@@ -44,11 +44,12 @@ one-way — the client who submitted the form does not receive an email.
 Required environment variables (see `.env.example`):
 
 - `SMTP_USER` — the mailbox that authenticates and sends
-  (e.g. `vivek.khetan@cachemere.ai`).
+  (e.g. `info@cachemere.ai`).
 - `SMTP_PASSWORD` — that account's password, or an app password if the
   account has MFA enabled.
-- `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land. Leave
-  blank to default to `SMTP_USER`, i.e. the same inbox that's sending.
+- `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land
+  (e.g. `vivek.khetan@cachemere.ai`). Leave blank to default to
+  `SMTP_USER` instead, i.e. the same inbox that's sending.
 
 If the mailbox has MFA enabled and login fails, generate an app password
 for it instead of using the normal account password (Microsoft account
