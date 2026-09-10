@@ -1,4 +1,5 @@
-const RESEND_API_URL = "https://api.resend.com/emails";
+import nodemailer from "nodemailer";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async function handler(req, res) {
@@ -7,12 +8,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASSWORD;
+  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL || smtpUser;
 
-  if (!apiKey || !companyEmail) {
-    console.error("Missing RESEND_API_KEY or COMPANY_NOTIFICATION_EMAIL env var");
+  if (!smtpUser || !smtpPass) {
+    console.error("Missing SMTP_USER or SMTP_PASSWORD env var");
     return res.status(500).json({ error: "Email service not configured" });
   }
 
@@ -43,27 +44,21 @@ export default async function handler(req, res) {
     )
     .join("")}</table>`;
 
-  try {
-    const notifyRes = await fetch(RESEND_API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `Cachemere Cloud <${fromEmail}>`,
-        to: [companyEmail],
-        reply_to: email,
-        subject: `New lead: ${company} (${name})`,
-        html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
-      }),
-    });
+  const transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    port: 587,
+    secure: false, // STARTTLS on port 587, not implicit TLS
+    auth: { user: smtpUser, pass: smtpPass },
+  });
 
-    if (!notifyRes.ok) {
-      const notifyBody = await notifyRes.text();
-      console.error("Resend error", notifyBody);
-      return res.status(502).json({ error: "Failed to send email" });
-    }
+  try {
+    await transporter.sendMail({
+      from: `Cachemere Cloud <${smtpUser}>`,
+      to: companyEmail,
+      replyTo: email,
+      subject: `New lead: ${company} (${name})`,
+      html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
+    });
 
     return res.status(200).json({ ok: true });
   } catch (err) {

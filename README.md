@@ -36,16 +36,27 @@ All copy, product/sector data, FAQs, and contact details are centralized in
 ## Contact form emails
 
 Submitting the "Talk to Us" form calls `api/contact.js`, a Vercel serverless
-function that sends a lead notification to the company inbox via
-[Resend](https://resend.com). It's one-way — the client who submitted the
-form does not receive an email.
+function that sends a lead notification straight through Microsoft's SMTP
+server (`smtp-mail.outlook.com:587`) via
+[Nodemailer](https://nodemailer.com) — no third-party email service. It's
+one-way — the client who submitted the form does not receive an email.
 
 Required environment variables (see `.env.example`):
 
-- `RESEND_API_KEY` — from your Resend account.
-- `COMPANY_NOTIFICATION_EMAIL` — where new leads get sent.
-- `CONTACT_FROM_EMAIL` — the "from" address; must be on a domain verified in
-  Resend for production use.
+- `SMTP_USER` — the mailbox that authenticates and sends
+  (e.g. `vivek.khetan@cachemere.ai`).
+- `SMTP_PASSWORD` — that account's password, or an app password if the
+  account has MFA enabled.
+- `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land. Leave
+  blank to default to `SMTP_USER`, i.e. the same inbox that's sending.
+
+If the mailbox has MFA enabled and login fails, generate an app password
+for it instead of using the normal account password (Microsoft account
+security settings → Advanced security options → App passwords). If app
+passwords aren't available at all (common on tenants with Security
+Defaults or Conditional Access), this basic-auth approach can't
+authenticate — tell me and we can switch to Microsoft Graph API with
+OAuth2 instead, which works regardless of that policy.
 
 Set these in Vercel under Project Settings → Environment Variables. To test
 locally, copy `.env.example` to `.env.local`, fill in the values, and run:
