@@ -1,3 +1,6 @@
+import { isValidPhoneNumber } from "libphonenumber-js";
+import { isBusinessEmail, isValidFullName } from "../src/lib/validation.js";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async function handler(req, res) {
@@ -21,11 +24,20 @@ export default async function handler(req, res) {
 
   const { name, company, email, phone, heardAbout, sector, message } = req.body || {};
 
-  if (!name || !company || !email || !phone) {
+  if (!name || !company || !email || !phone || !heardAbout) {
     return res.status(400).json({ error: "Missing required fields" });
+  }
+  if (!isValidFullName(name)) {
+    return res.status(400).json({ error: "Please enter your first and last name." });
   }
   if (!EMAIL_RE.test(email)) {
     return res.status(400).json({ error: "Invalid email address" });
+  }
+  if (!isBusinessEmail(email)) {
+    return res.status(400).json({ error: "Please use your business email address." });
+  }
+  if (!isValidPhoneNumber(phone)) {
+    return res.status(400).json({ error: "Please enter a valid phone number." });
   }
 
   const rows = [

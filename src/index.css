@@ -66,3 +66,39 @@ body {
     padding-inline: 2rem;
   }
 }
+
+/* Match react-phone-number-input's outer container to the rest of the form's inputs. */
+.contact-phone-input {
+  border: 1px solid rgb(18 26 44 / 0.15);
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.contact-phone-input:focus-within {
+  border-color: var(--color-teal-500);
+  box-shadow: 0 0 0 2px rgb(20 184 166 / 0.2);
+}
+
+.contact-phone-input--error {
+  border-color: #f87171;
+}
+
+.contact-phone-input--error:focus-within {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgb(239 68 68 / 0.2);
+}
+
+.contact-phone-input .PhoneInputInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+.contact-phone-input .PhoneInputCountrySelect {
+  cursor: pointer;
+}
