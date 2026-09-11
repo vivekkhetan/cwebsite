@@ -1,5 +1,3 @@
-import nodemailer from "nodemailer";
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async function handler(req, res) {
@@ -8,12 +6,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASSWORD;
-  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL || smtpUser;
+  const tenantId = process.env.MS_TENANT_ID;
+  const clientId = process.env.MS_CLIENT_ID;
+  const clientSecret = process.env.MS_CLIENT_SECRET;
+  const senderEmail = process.env.MS_SENDER_EMAIL;
+  const companyEmail = process.env.COMPANY_NOTIFICATION_EMAIL || senderEmail;
 
-  if (!smtpUser || !smtpPass) {
-    console.error("Missing SMTP_USER or SMTP_PASSWORD env var");
+  if (!tenantId || !clientId || !clientSecret || !senderEmail) {
+    console.error(
+      "Missing one of MS_TENANT_ID, MS_CLIENT_ID, MS_CLIENT_SECRET, MS_SENDER_EMAIL env vars",
+    );
     return res.status(500).json({ error: "Email service not configured" });
   }
 
@@ -44,21 +46,52 @@ export default async function handler(req, res) {
     )
     .join("")}</table>`;
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com",
-    port: 587,
-    secure: false, // STARTTLS on port 587, not implicit TLS
-    auth: { user: smtpUser, pass: smtpPass },
-  });
-
   try {
-    await transporter.sendMail({
-      from: `Cachemere Cloud <${smtpUser}>`,
-      to: companyEmail,
-      replyTo: email,
-      subject: `New lead: ${company} (${name})`,
-      html: `<h2>New "Talk to Us" submission</h2>${summaryHtml}`,
-    });
+    const tokenRes = await fetch(
+      `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          client_id: clientId,
+          client_secret: clientSecret,
+          scope: "https://graph.microsoft.com/.default",
+          grant_type: "client_credentials",
+        }),
+      },
+    );
+
+    if (!tokenRes.ok) {
+      console.error("Microsoft token request failed", await tokenRes.text());
+      return res.status(502).json({ error: "Failed to send email" });
+    }
+
+    const { access_token: accessToken } = await tokenRes.json();
+
+    const sendRes = await fetch(
+      `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(senderEmail)}/sendMail`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: {
+            subject: `New lead: ${company} (${name})`,
+            body: { contentType: "HTML", content: `<h2>New "Talk to Us" submission</h2>${summaryHtml}` },
+            toRecipients: [{ emailAddress: { address: companyEmail } }],
+            replyTo: [{ emailAddress: { address: email } }],
+          },
+          saveToSentItems: true,
+        }),
+      },
+    );
+
+    if (!sendRes.ok) {
+      console.error("Microsoft Graph sendMail failed", await sendRes.text());
+      return res.status(502).json({ error: "Failed to send email" });
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {

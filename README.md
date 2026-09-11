@@ -36,28 +36,55 @@ All copy, product/sector data, FAQs, and contact details are centralized in
 ## Contact form emails
 
 Submitting the "Talk to Us" form calls `api/contact.js`, a Vercel serverless
-function that sends a lead notification straight through Microsoft's SMTP
-server (`smtp-mail.outlook.com:587`) via
-[Nodemailer](https://nodemailer.com) — no third-party email service. It's
-one-way — the client who submitted the form does not receive an email.
+function that sends a lead notification through the **Microsoft Graph
+API**, authenticating as a registered Azure/Entra app (OAuth2 client
+credentials) rather than logging into a mailbox — no third-party email
+service, no mailbox password anywhere, and it works regardless of MFA or
+Conditional Access policy. It's one-way — the client who submitted the
+form does not receive an email.
 
 Required environment variables (see `.env.example`):
 
-- `SMTP_USER` — the mailbox that authenticates and sends
-  (e.g. `info@cachemere.ai`).
-- `SMTP_PASSWORD` — that account's password, or an app password if the
-  account has MFA enabled.
+- `MS_TENANT_ID`, `MS_CLIENT_ID`, `MS_CLIENT_SECRET` — from the app
+  registration below.
+- `MS_SENDER_EMAIL` — the mailbox the app sends as (e.g. `info@cachemere.ai`).
 - `COMPANY_NOTIFICATION_EMAIL` — where new lead notifications land
   (e.g. `vivek.khetan@cachemere.ai`). Leave blank to default to
-  `SMTP_USER` instead, i.e. the same inbox that's sending.
+  `MS_SENDER_EMAIL` instead.
 
-If the mailbox has MFA enabled and login fails, generate an app password
-for it instead of using the normal account password (Microsoft account
-security settings → Advanced security options → App passwords). If app
-passwords aren't available at all (common on tenants with Security
-Defaults or Conditional Access), this basic-auth approach can't
-authenticate — tell me and we can switch to Microsoft Graph API with
-OAuth2 instead, which works regardless of that policy.
+### One-time setup in the Microsoft Entra admin center
+
+Needs an account with permission to register apps and grant admin consent
+(Global Admin or Application Administrator).
+
+1. Go to **entra.microsoft.com** → **Identity** → **Applications** →
+   **App registrations** → **New registration**.
+   - Name it something like `Cachemere website contact form`.
+   - Leave the other defaults, click **Register**.
+2. On the app's **Overview** page, copy the **Application (client) ID**
+   and **Directory (tenant) ID** — these are `MS_CLIENT_ID` and
+   `MS_TENANT_ID`.
+3. Go to **Certificates & secrets** → **Client secrets** → **New client
+   secret**. Add a description, pick an expiry, click **Add**, then
+   **immediately copy the "Value" column** (not the Secret ID) — this is
+   `MS_CLIENT_SECRET`, and it's only shown once.
+4. Go to **API permissions** → **Add a permission** → **Microsoft Graph**
+   → **Application permissions** → search for and check **Mail.Send** →
+   **Add permissions**.
+5. Still on **API permissions**, click **Grant admin consent for
+   [your org]** and confirm. Without this step, sending will fail even
+   with everything else correct.
+6. *(Recommended)* Restrict the app to only send as `info@cachemere.ai`,
+   not any mailbox in the tenant, via Exchange Online PowerShell:
+   ```powershell
+   Connect-ExchangeOnline
+   New-ApplicationAccessPolicy -AppId "<MS_CLIENT_ID>" `
+     -PolicyScopeGroupId "info@cachemere.ai" `
+     -AccessRight RestrictAccess `
+     -Description "Contact form — can only send as info@cachemere.ai"
+   ```
+   Skipping this step isn't a functional blocker, just a wider blast
+   radius if the client secret ever leaked.
 
 Set these in Vercel under Project Settings → Environment Variables. To test
 locally, copy `.env.example` to `.env.local`, fill in the values, and run:
