@@ -24,15 +24,15 @@ export default function Header() {
   const handleContact = goToContact(navigate);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy-900/10 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line/10 bg-paper/80 backdrop-blur-xl">
       <div className="section-shell flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-navy-900" onClick={() => setOpen(false)}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500 text-white">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <Link to="/" className="flex items-center gap-2.5 font-semibold text-ink" onClick={() => setOpen(false)}>
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-accent-light text-white">
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 16.2 8.1 4.5 4.5 0 0 1 15.5 18H6Z" />
             </svg>
           </span>
-          <span className="text-lg tracking-tight">{COMPANY_NAME}</span>
+          <span className="text-sm tracking-tight">{COMPANY_NAME}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -41,9 +41,7 @@ export default function Header() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${
-                  isActive ? "text-navy-900" : "text-navy-700/70 hover:text-navy-900"
-                }`
+                `text-sm transition-colors ${isActive ? "text-ink font-medium" : "text-muted hover:text-ink"}`
               }
             >
               {link.label}
@@ -55,13 +53,13 @@ export default function Header() {
           <a
             href="/#contact"
             onClick={handleContact}
-            className="hidden rounded-full bg-saffron-500 px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-sm transition hover:bg-saffron-400 sm:inline-block"
+            className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition hover:opacity-80 sm:inline-block"
           >
             Talk to Us
           </a>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-navy-900/15 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line/15 md:hidden"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
           >
@@ -73,7 +71,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-navy-900/10 bg-white md:hidden">
+        <div className="border-t border-line/10 bg-paper md:hidden">
           <nav className="section-shell flex flex-col gap-1 py-3">
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -81,9 +79,7 @@ export default function Header() {
                 to={link.to}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-3 py-2.5 text-sm font-medium ${
-                    isActive ? "bg-navy-900/5 text-navy-900" : "text-navy-700/80"
-                  }`
+                  `rounded-lg px-3 py-2.5 text-sm font-medium ${isActive ? "bg-ink/5 text-ink" : "text-muted"}`
                 }
               >
                 {link.label}
@@ -95,7 +91,7 @@ export default function Header() {
                 setOpen(false);
                 handleContact(e);
               }}
-              className="mt-2 rounded-full bg-saffron-500 px-4 py-2.5 text-center text-sm font-semibold text-navy-950"
+              className="mt-2 rounded-full bg-ink px-4 py-2.5 text-center text-sm font-semibold text-paper"
             >
               Talk to Us
             </a>

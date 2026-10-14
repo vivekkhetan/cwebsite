@@ -109,53 +109,53 @@ export default function ContactSection() {
     `w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none focus:ring-2 ${
       fieldErrors[field]
         ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
-        : "border-navy-900/15 focus:border-teal-500 focus:ring-teal-500/20"
+        : "border-line/15 focus:border-accent focus:ring-accent/20"
     }`;
 
   return (
-    <section id="contact" className="scroll-mt-20 bg-blue-900 py-20 text-white">
+    <section id="contact" className="scroll-mt-20 bg-paper py-20 sm:py-24">
       <div className="section-shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-saffron-400">
+          <span className="block text-xs font-semibold uppercase tracking-wide text-accent">
             Get in touch
           </span>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Talk to us</h2>
-          <p className="mt-4 max-w-md text-navy-300">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">Talk to us</h2>
+          <p className="mt-4 max-w-md text-muted">
             Tell us about your business and what you're looking for. No obligation, no
             pricing pitch — just a conversation about whether we're a fit for each other.
           </p>
 
-          <ul className="mt-8 space-y-4 text-sm text-navy-200">
+          <ul className="mt-8 space-y-4 text-sm text-muted">
             <li className="flex items-center gap-3">
-              <Icon name="chat" className="h-5 w-5 text-teal-400" />
-              <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
+              <Icon name="chat" className="h-5 w-5 text-accent" />
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-ink">
                 {CONTACT.email}
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <Icon name="check" className="h-5 w-5 text-teal-400" />
-              <a href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`} className="hover:text-white">
+              <Icon name="check" className="h-5 w-5 text-accent" />
+              <a href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`} className="hover:text-ink">
                 {CONTACT.phone}
               </a>
             </li>
           </ul>
         </div>
 
-        <div className="rounded-2xl bg-white p-6 text-navy-900 shadow-xl sm:p-8">
+        <div className="rounded-[20px] border border-line/10 bg-surface p-6 text-ink shadow-sm sm:p-8">
           {submitted ? (
             <div className="flex flex-col items-center justify-center gap-3 py-10 text-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-500/10 text-teal-600">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
                 <Icon name="check" className="h-6 w-6" />
               </span>
               <h3 className="text-xl font-semibold">Thanks — we've got it.</h3>
-              <p className="max-w-sm text-sm text-navy-600">
+              <p className="max-w-sm text-sm text-muted">
                 Someone from our team will reach out to {form.email || "you"} shortly to
                 continue the conversation.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="grid gap-4 sm:grid-cols-2">
-              <p className="text-xs text-navy-500 sm:col-span-2">
+              <p className="text-xs text-muted sm:col-span-2">
                 Please use your full name (first and last) and a business email address —
                 we don't accept personal addresses like Gmail, Yahoo, or Outlook.com.
               </p>
@@ -235,7 +235,7 @@ export default function ContactSection() {
                 <select
                   value={form.sector}
                   onChange={update("sector")}
-                  className="w-full rounded-lg border border-navy-900/15 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+                  className="w-full rounded-lg border border-line/15 bg-surface px-3.5 py-2.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
                 >
                   <option value="">Select a sector</option>
                   {SECTOR_OPTIONS.map((opt) => (
@@ -251,7 +251,7 @@ export default function ContactSection() {
                   value={form.message}
                   onChange={update("message")}
                   rows={3}
-                  className="w-full rounded-lg border border-navy-900/15 px-3.5 py-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+                  className="w-full rounded-lg border border-line/15 px-3.5 py-2.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
                   placeholder="Tell us a bit about your business and what you need"
                 />
               </div>
@@ -262,11 +262,11 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full rounded-full bg-saffron-500 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:bg-saffron-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   {submitting ? "Sending…" : "Talk to Us"}
                 </button>
-                <p className="mt-3 text-xs text-navy-500">
+                <p className="mt-3 text-xs text-muted">
                   No pricing or checkout here — just a conversation. We'll never share your details.
                 </p>
               </div>

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import SectorCard from "../components/SectorCard";
-import StatusBadge from "../components/StatusBadge";
+import PageHero from "../components/PageHero";
+import ClosingCta from "../components/ClosingCta";
+import CardGrid from "../components/CardGrid";
 import { COMPANY_NAME, SECTORS } from "../data/content";
 
 export default function Solutions() {
@@ -12,52 +13,32 @@ export default function Solutions() {
         description="Native solutions built directly on Cachemere Cloud's own infrastructure for manufacturing, healthcare, education, and hospitality businesses across India."
       />
 
-      <section className="bg-blue-900 py-16 text-white sm:py-20">
-        <div className="section-shell">
-          <StatusBadge tone="teal">Solutions — coming soon</StatusBadge>
-          <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Native solutions, built directly on our own infrastructure, for the sectors we know best.
-          </h1>
-          <p className="mt-5 max-w-2xl text-navy-300">
-            Each solution runs natively on our own infrastructure — in a multi-tenant
-            model (shared, cost-efficient) or a single-tenant model (dedicated, more
-            control) — so you get enterprise-grade reliability without the engineering
-            lift of building it yourself.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Solutions — coming soon"
+        title="Native solutions, built directly on our own infrastructure, for the sectors we know best."
+        body="Each solution runs natively on our own infrastructure — in a multi-tenant model (shared, cost-efficient) or a single-tenant model (dedicated, more control) — so you get enterprise-grade reliability without the engineering lift of building it yourself."
+      />
 
       <section className="py-16 sm:py-20">
-        <div className="section-shell grid gap-6 sm:grid-cols-2">
-          {SECTORS.map((sector) => (
-            <SectorCard
-              key={sector.key}
-              name={sector.name}
-              subBrand={sector.subBrand}
-              positioning={sector.positioning}
-              icon={sector.icon}
-            />
-          ))}
+        <div className="section-shell">
+          <CardGrid cols={4}>
+            {SECTORS.map((sector) => (
+              <SectorCard
+                key={sector.key}
+                name={sector.name}
+                subBrand={sector.subBrand}
+                positioning={sector.positioning}
+                icon={sector.icon}
+              />
+            ))}
+          </CardGrid>
         </div>
       </section>
 
-      <section className="border-t border-navy-900/10 bg-navy-50/60 py-16 text-center sm:py-20">
-        <div className="section-shell">
-          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">
-            Don't see your industry?
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg text-navy-600">
-            Our core infrastructure works across sectors, whether or not we've built a
-            native solution for yours yet — talk to us about what you need.
-          </p>
-          <Link
-            to="/#contact"
-            className="mt-7 inline-block rounded-full bg-saffron-500 px-7 py-3.5 text-sm font-semibold text-navy-950 hover:bg-saffron-400"
-          >
-            Talk to Us
-          </Link>
-        </div>
-      </section>
+      <ClosingCta
+        title="Don't see your industry?"
+        body="Our core infrastructure works across sectors, whether or not we've built a native solution for yours yet — talk to us about what you need."
+      />
     </>
   );
 }

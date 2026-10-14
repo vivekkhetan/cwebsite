@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
-import StatusBadge from "../components/StatusBadge";
+import PageHero from "../components/PageHero";
+import ClosingCta from "../components/ClosingCta";
+import CardGrid from "../components/CardGrid";
 import { COMPANY_NAME, BRAND_VALUES } from "../data/content";
 
 const COMPARISON = [
@@ -35,34 +36,27 @@ export default function About() {
         description="One platform, two ways in — the purpose behind Cachemere Cloud's core infrastructure and native solutions for India."
       />
 
-      <section className="bg-blue-900 py-16 text-white sm:py-20">
-        <div className="section-shell">
-          <StatusBadge tone="teal">About us</StatusBadge>
-          <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Infrastructure built for India's growing businesses.
-          </h1>
-        </div>
-      </section>
+      <PageHero badge="About us" title="Infrastructure built for India's growing businesses." />
 
       <section className="py-16 sm:py-20">
         <div className="section-shell grid gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div>
-            <h2 className="text-2xl font-bold text-navy-900">Why we exist</h2>
-            <p className="mt-4 leading-relaxed text-navy-600">
+            <h2 className="text-2xl font-bold tracking-tight text-ink">Why we exist</h2>
+            <p className="mt-4 leading-relaxed text-muted">
               India is home to millions of ambitious businesses, and {COMPANY_NAME} gives
               them direct access to the same cloud infrastructure large enterprises rely
               on: compute, storage, networking, and databases, built and supported
               specifically for this market, so they can run their operations without
               needing to become infrastructure experts themselves.
             </p>
-            <p className="mt-4 leading-relaxed text-navy-600">
+            <p className="mt-4 leading-relaxed text-muted">
               For the industries we know best, we go further — ready-made, native
               solutions built directly on our own infrastructure, so businesses don't
               have to build from scratch to get enterprise-grade operations. Either way,
               we stand beside our customers with human support, so their energy goes into
               their business, not their infrastructure.
             </p>
-            <p className="mt-4 leading-relaxed text-navy-600">
+            <p className="mt-4 leading-relaxed text-muted">
               Our vision is a country digitized from the ground up — where businesses in
               every city have real access to reliable cloud infrastructure and the
               freedom to build what their business needs on top of it. We're currently in
@@ -72,16 +66,16 @@ export default function About() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-navy-900/10 bg-navy-50/60 p-6 sm:p-8">
-            <h2 className="text-lg font-semibold text-navy-900">Founding team</h2>
-            <p className="mt-2 text-sm text-navy-600">
+          <div className="rounded-[20px] border border-line/10 bg-surface p-6 sm:p-8">
+            <h2 className="text-lg font-semibold text-ink">Founding team</h2>
+            <p className="mt-2 text-sm text-muted">
               Team bios and photos will be added here as they're finalized.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {[1, 2].map((i) => (
-                <div key={i} className="rounded-xl border border-dashed border-navy-900/20 p-5 text-center">
-                  <div className="mx-auto h-16 w-16 rounded-full bg-navy-900/10" />
-                  <p className="mt-3 text-sm font-medium text-navy-500">Bio coming soon</p>
+                <div key={i} className="rounded-xl border border-dashed border-line/20 p-5 text-center">
+                  <div className="mx-auto h-16 w-16 rounded-full bg-line/10" />
+                  <p className="mt-3 text-sm font-medium text-muted">Bio coming soon</p>
                 </div>
               ))}
             </div>
@@ -89,41 +83,41 @@ export default function About() {
         </div>
       </section>
 
-      <section className="border-t border-navy-900/10 bg-navy-50/60 py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <div className="section-shell">
-          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">What we believe</h2>
-          <p className="mt-3 max-w-2xl text-navy-600">Our brand values, in practice.</p>
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">What we believe</h2>
+          <p className="mt-3 max-w-2xl text-muted">Our brand values, in practice.</p>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <CardGrid cols={2} className="mt-8">
             {BRAND_VALUES.map((value) => (
-              <div key={value.title} className="rounded-2xl border border-navy-900/10 bg-white p-6">
-                <h3 className="font-semibold text-navy-900">{value.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-600">{value.body}</p>
+              <div key={value.title} className="flex flex-col gap-3 bg-surface p-7 sm:p-8">
+                <h3 className="font-semibold text-ink">{value.title}</h3>
+                <p className="text-sm leading-relaxed text-muted">{value.body}</p>
               </div>
             ))}
-          </div>
+          </CardGrid>
         </div>
       </section>
 
       <section className="py-16 sm:py-20">
         <div className="section-shell">
-          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             How we're different from global cloud providers
           </h2>
-          <p className="mt-3 max-w-2xl text-navy-600">
+          <p className="mt-3 max-w-2xl text-muted">
             A factual comparison — not a knock on anyone, just what we're optimizing for.
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-2xl border border-navy-900/10 bg-white">
-            <div className="grid grid-cols-3 gap-px bg-navy-900/10 text-sm">
-              <div className="bg-navy-50 p-4 font-semibold text-navy-900">Theme</div>
-              <div className="bg-blue-800 p-4 font-semibold text-white">{COMPANY_NAME}</div>
-              <div className="bg-navy-50 p-4 font-semibold text-navy-900">Global hyperscalers</div>
+          <div className="mt-8 overflow-hidden rounded-[20px] border border-line/10 bg-surface">
+            <div className="grid grid-cols-3 gap-px bg-line/10 text-sm">
+              <div className="bg-surface p-4 font-semibold text-ink">Theme</div>
+              <div className="bg-ink p-4 font-semibold text-paper">{COMPANY_NAME}</div>
+              <div className="bg-surface p-4 font-semibold text-ink">Global hyperscalers</div>
               {COMPARISON.map((row) => (
                 <Fragment key={row.theme}>
-                  <div className="bg-white p-4 font-medium text-navy-800">{row.theme}</div>
-                  <div className="bg-teal-500/5 p-4 text-navy-700">{row.us}</div>
-                  <div className="bg-white p-4 text-navy-500">{row.global}</div>
+                  <div className="bg-surface p-4 font-medium text-ink">{row.theme}</div>
+                  <div className="bg-accent/5 p-4 text-ink">{row.us}</div>
+                  <div className="bg-surface p-4 text-muted">{row.global}</div>
                 </Fragment>
               ))}
             </div>
@@ -131,17 +125,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 text-center sm:py-20">
-        <div className="section-shell">
-          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">Want to be part of the early conversations?</h2>
-          <Link
-            to="/#contact"
-            className="mt-7 inline-block rounded-full bg-saffron-500 px-7 py-3.5 text-sm font-semibold text-navy-950 hover:bg-saffron-400"
-          >
-            Talk to Us
-          </Link>
-        </div>
-      </section>
+      <ClosingCta title="Want to be part of the early conversations?" />
     </>
   );
 }
