@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import StatusBadge from "./StatusBadge";
 
-export default function SectorCard({ name, subBrand, positioning, icon, compact = false }) {
+export default function SectorCard({ name, subBrand, positioning, icon, comingSoon = false, compact = false }) {
   return (
     <div className="flex flex-col gap-3 bg-surface p-7 transition hover:bg-accent/[0.04] sm:p-8">
       <div className="flex items-start justify-between gap-3">
         <Icon name={icon} className="h-7 w-7 text-accent" strokeWidth={1.6} />
-        <StatusBadge tone="amber">Coming soon</StatusBadge>
+        {comingSoon && <StatusBadge tone="amber">Coming soon</StatusBadge>}
       </div>
       <h3 className="text-base font-semibold text-ink">
         {name}

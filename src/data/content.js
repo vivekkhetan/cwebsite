@@ -79,6 +79,7 @@ export const KEY_MESSAGES = [
   },
 ];
 
+// Cloud services catalog — grouped the way a customer decides, not the way it's built.
 export const PRODUCT_CATEGORIES = [
   {
     category: "Compute",
@@ -86,21 +87,64 @@ export const PRODUCT_CATEGORIES = [
       {
         name: "GPU Cloud",
         subtitle: "GPU-as-a-Service",
-        description:
-          "Rent powerful GPU capacity on demand to train and run AI models — no hardware to buy or maintain.",
+        description: "On-demand GPU capacity to train and run AI models — no hardware to buy or maintain.",
         icon: "cpu",
       },
       {
-        name: "Cloud Server",
-        description:
-          "Virtual machines for your everyday applications and workloads, scalable as you grow.",
+        name: "General Purpose",
+        description: "Balanced CPU and memory for everyday workloads and getting started.",
         icon: "server",
       },
       {
-        name: "Bare Metal",
-        description:
-          "Dedicated physical servers for workloads that need guaranteed, isolated performance.",
+        name: "Compute Optimized",
+        description: "More CPU per core, for processing-heavy workloads.",
         icon: "cube",
+      },
+      {
+        name: "Memory Optimized",
+        description: "More memory per core, for memory-intensive workloads.",
+        icon: "grid",
+      },
+    ],
+  },
+  {
+    category: "Dedicated",
+    items: [
+      {
+        name: "Private & Dedicated Cloud",
+        description:
+          "Dedicated servers, a fully isolated private cloud, or our platform in your own facility, managed by us.",
+        icon: "lock",
+      },
+    ],
+  },
+  {
+    category: "Networking",
+    items: [
+      {
+        name: "Private Networks & Subnets",
+        description: "Private networks and subnets, built around how your systems actually talk to each other.",
+        icon: "network",
+      },
+      {
+        name: "Public IPs & DNS",
+        description: "Public addressing and domain management, managed from the same place as everything else.",
+        icon: "globe",
+      },
+      {
+        name: "VPN & Micro-segmentation",
+        description: "Secure connections in, and fine-grained separation between workloads once they're on.",
+        icon: "shield",
+      },
+      {
+        name: "Load Balancing",
+        description: "Traffic spread across servers, with health checks and automatic failover.",
+        icon: "scale",
+      },
+      {
+        name: "Firewall as a Service",
+        description: "A dedicated, managed firewall for every customer — not a shared ruleset.",
+        icon: "shield-check",
       },
     ],
   },
@@ -109,105 +153,186 @@ export const PRODUCT_CATEGORIES = [
     items: [
       {
         name: "Block Storage",
-        description: "High-performance storage that attaches directly to your servers.",
+        description: "High-performance storage that attaches directly to your servers, with snapshots.",
         icon: "disk",
       },
       {
         name: "Object Storage",
         subtitle: "S3-compatible",
-        description:
-          "Simple, scalable storage for files, backups, and media — compatible with common tools.",
+        description: "S3-compatible storage for files, backups and media, at any scale.",
         icon: "bucket",
       },
-    ],
-  },
-  {
-    category: "Resilience",
-    items: [
       {
-        name: "Backups & Disaster Recovery",
-        description:
-          "Automatic backups and recovery plans so a failure never means losing your business data.",
-        icon: "shield-check",
-      },
-    ],
-  },
-  {
-    category: "Networking & Ops",
-    items: [
-      {
-        name: "Managed Kubernetes",
-        description: "Run modern containerized applications without managing the complexity yourself.",
+        name: "File Storage",
+        description: "High-performance shared file storage for workloads that need it.",
         icon: "grid",
       },
       {
-        name: "Firewall",
-        description: "Network-level protection to keep unauthorized traffic out.",
-        icon: "shield",
-      },
-      {
-        name: "DDoS Protection",
-        description: "Keeps your services online and available during attack attempts.",
-        icon: "bolt-shield",
-      },
-      {
-        name: "VPC",
-        subtitle: "Virtual Private Cloud",
-        description: "A private, isolated network environment for your infrastructure.",
-        icon: "network",
-      },
-      {
-        name: "Load Balancer",
-        description: "Distributes traffic across servers so performance stays smooth as you scale.",
-        icon: "scale",
-      },
-      {
-        name: "DNS Manager",
-        description: "Manage your domains and routing in one place.",
-        icon: "globe",
+        name: "Archiving",
+        description: "Long-term archiving with full version history.",
+        icon: "book",
       },
     ],
   },
   {
-    category: "Data",
+    category: "Platform & Data",
     items: [
       {
-        name: "Managed Database",
-        description: "Fully managed databases — we handle setup, patching, and scaling.",
+        name: "Managed Kubernetes",
+        description: "Managed clusters for container workloads, without running the control plane yourself.",
+        icon: "grid",
+      },
+      {
+        name: "Database as a Service",
+        description:
+          "Managed PostgreSQL, MySQL, SQL Server, MongoDB and Redis, with high availability and point-in-time recovery.",
         icon: "database",
+      },
+    ],
+  },
+  {
+    category: "Resilience & Hybrid",
+    items: [
+      {
+        name: "Backup",
+        description: "Scheduled, ransomware-resistant backups with self-service restore.",
+        icon: "shield-check",
+      },
+      {
+        name: "Disaster Recovery as a Service",
+        description:
+          "Keep your business running if your own servers, AWS or Google Cloud go down — recover into our cloud with agreed recovery times and regular drills.",
+        icon: "shield",
+      },
+      {
+        name: "Hybrid Cloud",
+        description: "Connect AWS or Google Cloud to us, with one dashboard and one set of security rules.",
+        icon: "globe",
       },
     ],
   },
 ];
 
-export const SECTORS = [
+// Curated highlights for the Home page's condensed overview — not the full Products catalog.
+export const PRODUCT_HIGHLIGHTS = [
+  { name: "GPU Cloud", icon: "cpu" },
+  { name: "Cloud Server", icon: "server" },
+  { name: "Object Storage", icon: "bucket" },
+  { name: "Managed Kubernetes", icon: "grid" },
+  { name: "Managed Database", icon: "database" },
+  { name: "Firewall as a Service", icon: "shield-check" },
+  { name: "Backup", icon: "shield" },
+];
+
+// Account-level capabilities and operations — not raw infrastructure you provision.
+export const PLATFORM_OPERATIONS = [
   {
-    key: "manufacturing",
-    name: "Manufacturing",
-    positioning:
-      "AI-driven insights and automation to reduce downtime, optimize production, and cut operational costs.",
-    icon: "factory",
+    name: "Identity & Access",
+    description: "Users, roles, MFA and single sign-on.",
+    icon: "lock",
   },
   {
-    key: "healthcare",
-    name: "Healthcare",
-    positioning:
-      "Secure, compliant digital infrastructure for patient data, records, and AI-assisted operations — built for India's data protection needs.",
-    icon: "health",
+    name: "Monitoring & Logging",
+    description: "Performance graphs, alerts and full audit logs.",
+    icon: "grid",
+  },
+  {
+    name: "Managed Services",
+    description: "We run your infrastructure 24x7 — monitoring, patching, security operations and audit-ready reports.",
+    icon: "shield-check",
+  },
+];
+
+export const SERVICES = [
+  {
+    name: "Assessment & Planning",
+    description: "Understand what you're running today before we touch anything.",
+    icon: "check",
+  },
+  {
+    name: "Migration",
+    description: "Included free with every plan — moving to us doesn't cost extra.",
+    icon: "arrow",
+  },
+  {
+    name: "Software Implementation",
+    description: "Hands-on setup of whichever industry software you choose.",
+    icon: "cube",
+  },
+  {
+    name: "Integrations",
+    description: "Connect the systems you already depend on.",
+    icon: "network",
+  },
+  {
+    name: "Compliance Readiness",
+    description: "Get your environment ready for the audits that matter to you.",
+    icon: "shield-check",
+  },
+  {
+    name: "DevOps Support",
+    description: "Ongoing hands-on help running what you've built.",
+    icon: "chat",
+  },
+];
+
+// Industry clouds — the same core infrastructure above, pre-shaped for each sector.
+export const SECTORS = [
+  {
+    key: "hospitality",
+    name: "Hospitality Cloud",
+    subBrand: "Nest by Cachemere",
+    positioning: "Always online, multi-property control, a secured zone for card payments, and all your hotel systems connected.",
+    icon: "hotel",
+    comingSoon: false,
   },
   {
     key: "education",
-    name: "Education",
+    name: "Education Cloud",
     positioning:
-      "Cloud-powered tools to manage institutions, support digital learning, and use analytics to improve outcomes.",
+      "Ready for admissions and results day, smooth video and learning content, and student data protected, including parental consent.",
+    icon: "book",
+    comingSoon: false,
+  },
+  {
+    key: "healthcare",
+    name: "Healthcare Cloud",
+    positioning: "Isolated servers, patient consent controls, zero trust access and tamper-proof audit logs.",
+    icon: "health",
+    comingSoon: true,
+  },
+  {
+    key: "manufacturing",
+    name: "Manufacturing Cloud",
+    positioning: "Engineering and machine data in one place, computing at every plant, and fast storage with version history.",
+    icon: "factory",
+    comingSoon: true,
+  },
+];
+
+// Industry software — ready-made applications running natively on the industry clouds above.
+export const INDUSTRY_SOFTWARE = [
+  {
+    name: "Nest Suite",
+    subtitle: "Hotel management system",
+    description: "Front desk, POS, housekeeping, revenue management, CRM, accounting, HR and reports.",
+    icon: "hotel",
+  },
+  {
+    name: "Atlas Campus",
+    subtitle: "School ERP",
+    description: "Admissions, attendance, exams, fees, parent and teacher apps, transport and HR.",
     icon: "book",
   },
   {
-    key: "hospitality",
-    name: "Hospitality",
-    subBrand: "Nest by Cachemere",
-    positioning: "Smarter operations and guest experience through connected, AI-enabled systems.",
-    icon: "hotel",
+    name: "Hospital & Clinic EMR",
+    description: "Appointments, medical records, OPD and IPD, pharmacy, lab, billing and ABDM integration.",
+    icon: "health",
+  },
+  {
+    name: "Manufacturing ERP",
+    description: "Sales, purchasing, inventory, production planning, maintenance and GST e-invoicing.",
+    icon: "factory",
   },
 ];
 

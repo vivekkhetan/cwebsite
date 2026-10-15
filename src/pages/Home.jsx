@@ -7,7 +7,7 @@ import ContactSection from "../components/ContactSection";
 import {
   COMPANY_NAME,
   WHY_POINTS,
-  PRODUCT_CATEGORIES,
+  PRODUCT_HIGHLIGHTS,
   SECTORS,
   SECURITY_PILLARS,
   HOW_IT_WORKS,
@@ -19,8 +19,6 @@ const HERO_STACK_ICONS = ["cpu", "server", "cube", "disk", "bucket", "shield-che
 const WHY_ICONS = ["grid", "server", "chat", "globe"];
 
 export default function Home() {
-  const productNames = PRODUCT_CATEGORIES.flatMap((cat) => cat.items);
-
   return (
     <>
       <Seo
@@ -130,7 +128,7 @@ export default function Home() {
                 stitching together five vendors.
               </p>
               <div className="mt-6 flex flex-wrap gap-2.5">
-                {productNames.map((p) => (
+                {PRODUCT_HIGHLIGHTS.map((p) => (
                   <span
                     key={p.name}
                     className="inline-flex items-center gap-2 rounded-full border border-line/10 bg-paper px-3.5 py-1.5 text-xs font-medium text-ink"
